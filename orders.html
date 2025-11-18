@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopify Orders</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Shopify Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTable"></tbody>
+    </table>
+
+    <script>
+        async function fetchOrders() {
+            const response = await fetch('https://monserveuruniqueapi.loca.lt/api/orders/');
+            const data = await response.json();
+            const table = document.getElementById('ordersTable');
+            table.innerHTML = '';
+            data.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${order.Id}</td><td>${order.Client}</td><td>${order.Total}</td>`;
+                table.appendChild(row);
+            });
+        }
+
+        setInterval(fetchOrders, 2000);
+        fetchOrders();
+    </script>
+</body>
+</html>

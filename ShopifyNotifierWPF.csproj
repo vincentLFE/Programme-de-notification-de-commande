@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\alert.wav" />
+    <None Remove="Assets\slot.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\alert.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
+    <Resource Include="Assets\slot.gif" />
+  </ItemGroup>
+
+</Project>
